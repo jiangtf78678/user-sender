@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiangtf.demo.dao.TradeDeailsMapper" >
+  <resultMap id="BaseResultMap" type="com.jiangtf.demo.entity.TradeDeails" >
+    <id column="ID" property="id" jdbcType="VARCHAR" />
+    <result column="TRADE_ID" property="tradeId" jdbcType="VARCHAR" />
+    <result column="TRADE_TIME" property="tradeTime" jdbcType="TIMESTAMP" />
+    <result column="DEBIT_AMOUNT" property="debitAmount" jdbcType="DECIMAL" />
+    <result column="LENDER_AMOUNT" property="lenderAmount" jdbcType="DECIMAL" />
+    <result column="BALANCE" property="balance" jdbcType="DECIMAL" />
+    <result column="TRADE_TYPE" property="tradeType" jdbcType="VARCHAR" />
+    <result column="OPP_ACCOUNT_NAME" property="oppAccountName" jdbcType="VARCHAR" />
+    <result column="OPP_ACCOUNT_ID" property="oppAccountId" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_NAME" property="accountName" jdbcType="VARCHAR" />
+    <result column="ACCOUNT_ID" property="accountId" jdbcType="VARCHAR" />
+    <result column="DIGESG" property="digesg" jdbcType="VARCHAR" />
+    <result column="STATUS" property="status" jdbcType="VARCHAR" />
+    <result column="CREATE_BY" property="createBy" jdbcType="VARCHAR" />
+    <result column="UPDATE_TIME" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="CREATE_TIME" property="createTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, TRADE_ID, TRADE_TIME, DEBIT_AMOUNT, LENDER_AMOUNT, BALANCE, TRADE_TYPE, OPP_ACCOUNT_NAME, 
+    OPP_ACCOUNT_ID, ACCOUNT_NAME, ACCOUNT_ID, DIGESG, STATUS, CREATE_BY, UPDATE_TIME, 
+    CREATE_TIME
+  </sql>
+  <update id="updateStatusById">
+    UPDATE trade_details SET  STATUS =1 WHERE ID =#{id,jdbcType=VARCHAR }
+  </update>
+
+  <select id="queryByNotSync" resultType="com.jiangtf.demo.entity.TradeDeails">
+        SELECT * FROM trade_details WHERE  ID in
+    <foreach  item="item" collection="list" index="index"  open="(" separator="," close=")">#{item}
+    </foreach>
+  </select>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select
+    <include refid="Base_Column_List" />
+    from trade_details
+    where ID = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from trade_details
+    where ID = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.jiangtf.demo.entity.TradeDeails" >
+    insert into trade_details (ID, TRADE_ID, TRADE_TIME,
+      DEBIT_AMOUNT, LENDER_AMOUNT, BALANCE,
+      TRADE_TYPE, OPP_ACCOUNT_NAME, OPP_ACCOUNT_ID,
+      ACCOUNT_NAME, ACCOUNT_ID, DIGESG,
+      STATUS, CREATE_BY, UPDATE_TIME,
+      CREATE_TIME)
+    values (#{id,jdbcType=VARCHAR}, #{tradeId,jdbcType=VARCHAR}, #{tradeTime,jdbcType=TIMESTAMP},
+      #{debitAmount,jdbcType=DECIMAL}, #{lenderAmount,jdbcType=DECIMAL}, #{balance,jdbcType=DECIMAL},
+      #{tradeType,jdbcType=VARCHAR}, #{oppAccountName,jdbcType=VARCHAR}, #{oppAccountId,jdbcType=VARCHAR},
+      #{accountName,jdbcType=VARCHAR}, #{accountId,jdbcType=VARCHAR}, #{digesg,jdbcType=VARCHAR},
+      #{status,jdbcType=VARCHAR}, #{createBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP},
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiangtf.demo.entity.TradeDeails" >
+    insert into trade_details
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="tradeId != null" >
+        TRADE_ID,
+      </if>
+      <if test="tradeTime != null" >
+        TRADE_TIME,
+      </if>
+      <if test="debitAmount != null" >
+        DEBIT_AMOUNT,
+      </if>
+      <if test="lenderAmount != null" >
+        LENDER_AMOUNT,
+      </if>
+      <if test="balance != null" >
+        BALANCE,
+      </if>
+      <if test="tradeType != null" >
+        TRADE_TYPE,
+      </if>
+      <if test="oppAccountName != null" >
+        OPP_ACCOUNT_NAME,
+      </if>
+      <if test="oppAccountId != null" >
+        OPP_ACCOUNT_ID,
+      </if>
+      <if test="accountName != null" >
+        ACCOUNT_NAME,
+      </if>
+      <if test="accountId != null" >
+        ACCOUNT_ID,
+      </if>
+      <if test="digesg != null" >
+        DIGESG,
+      </if>
+      <if test="status != null" >
+        STATUS,
+      </if>
+      <if test="createBy != null" >
+        CREATE_BY,
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME,
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeId != null" >
+        #{tradeId,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeTime != null" >
+        #{tradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="debitAmount != null" >
+        #{debitAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="lenderAmount != null" >
+        #{lenderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeType != null" >
+        #{tradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="oppAccountName != null" >
+        #{oppAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="oppAccountId != null" >
+        #{oppAccountId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountName != null" >
+        #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null" >
+        #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="digesg != null" >
+        #{digesg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiangtf.demo.entity.TradeDeails" >
+    update trade_details
+    <set >
+      <if test="tradeId != null" >
+        TRADE_ID = #{tradeId,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeTime != null" >
+        TRADE_TIME = #{tradeTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="debitAmount != null" >
+        DEBIT_AMOUNT = #{debitAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="lenderAmount != null" >
+        LENDER_AMOUNT = #{lenderAmount,jdbcType=DECIMAL},
+      </if>
+      <if test="balance != null" >
+        BALANCE = #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="tradeType != null" >
+        TRADE_TYPE = #{tradeType,jdbcType=VARCHAR},
+      </if>
+      <if test="oppAccountName != null" >
+        OPP_ACCOUNT_NAME = #{oppAccountName,jdbcType=VARCHAR},
+      </if>
+      <if test="oppAccountId != null" >
+        OPP_ACCOUNT_ID = #{oppAccountId,jdbcType=VARCHAR},
+      </if>
+      <if test="accountName != null" >
+        ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      </if>
+      <if test="accountId != null" >
+        ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      </if>
+      <if test="digesg != null" >
+        DIGESG = #{digesg,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        STATUS = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="createBy != null" >
+        CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createTime != null" >
+        CREATE_TIME = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiangtf.demo.entity.TradeDeails" >
+    update trade_details
+    set TRADE_ID = #{tradeId,jdbcType=VARCHAR},
+      TRADE_TIME = #{tradeTime,jdbcType=TIMESTAMP},
+      DEBIT_AMOUNT = #{debitAmount,jdbcType=DECIMAL},
+      LENDER_AMOUNT = #{lenderAmount,jdbcType=DECIMAL},
+      BALANCE = #{balance,jdbcType=DECIMAL},
+      TRADE_TYPE = #{tradeType,jdbcType=VARCHAR},
+      OPP_ACCOUNT_NAME = #{oppAccountName,jdbcType=VARCHAR},
+      OPP_ACCOUNT_ID = #{oppAccountId,jdbcType=VARCHAR},
+      ACCOUNT_NAME = #{accountName,jdbcType=VARCHAR},
+      ACCOUNT_ID = #{accountId,jdbcType=VARCHAR},
+      DIGESG = #{digesg,jdbcType=VARCHAR},
+      STATUS = #{status,jdbcType=VARCHAR},
+      CREATE_BY = #{createBy,jdbcType=VARCHAR},
+      UPDATE_TIME = #{updateTime,jdbcType=TIMESTAMP},
+      CREATE_TIME = #{createTime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=VARCHAR}
+  </update>
+
+
+
+</mapper>

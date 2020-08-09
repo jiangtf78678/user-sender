@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiangtf.demo.dao.ExtryLeaveUserMapper" >
+  <resultMap id="BaseResultMap" type="com.jiangtf.demo.entity.ExtryLeaveUser" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="enterprise_id" property="enterpriseId" jdbcType="TINYINT" />
+    <result column="enterprise_name" property="enterpriseName" jdbcType="VARCHAR" />
+    <result column="work_status" property="workStatus" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="BIGINT" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="export_time" property="exportTime" jdbcType="TIMESTAMP" />
+    <result column="is_del" property="isDel" jdbcType="INTEGER" />
+    <result column="ts" property="ts" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, enterprise_id, enterprise_name, work_status, user_id, user_name, create_time, 
+    export_time, is_del, ts
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_extry_leave_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_extry_leave_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jiangtf.demo.entity.ExtryLeaveUser" >
+    insert into tb_extry_leave_user (id, enterprise_id, enterprise_name, 
+      work_status, user_id, user_name, 
+      create_time, export_time, is_del, 
+      ts)
+    values (#{id,jdbcType=INTEGER}, #{enterpriseId,jdbcType=TINYINT}, #{enterpriseName,jdbcType=VARCHAR}, 
+      #{workStatus,jdbcType=INTEGER}, #{userId,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{exportTime,jdbcType=TIMESTAMP}, #{isDel,jdbcType=INTEGER}, 
+      #{ts,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiangtf.demo.entity.ExtryLeaveUser" >
+    insert into tb_extry_leave_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="enterpriseId != null" >
+        enterprise_id,
+      </if>
+      <if test="enterpriseName != null" >
+        enterprise_name,
+      </if>
+      <if test="workStatus != null" >
+        work_status,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="exportTime != null" >
+        export_time,
+      </if>
+      <if test="isDel != null" >
+        is_del,
+      </if>
+      <if test="ts != null" >
+        ts,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="enterpriseId != null" >
+        #{enterpriseId,jdbcType=TINYINT},
+      </if>
+      <if test="enterpriseName != null" >
+        #{enterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="workStatus != null" >
+        #{workStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exportTime != null" >
+        #{exportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null" >
+        #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="ts != null" >
+        #{ts,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiangtf.demo.entity.ExtryLeaveUser" >
+    update tb_extry_leave_user
+    <set >
+      <if test="enterpriseId != null" >
+        enterprise_id = #{enterpriseId,jdbcType=TINYINT},
+      </if>
+      <if test="enterpriseName != null" >
+        enterprise_name = #{enterpriseName,jdbcType=VARCHAR},
+      </if>
+      <if test="workStatus != null" >
+        work_status = #{workStatus,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="exportTime != null" >
+        export_time = #{exportTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDel != null" >
+        is_del = #{isDel,jdbcType=INTEGER},
+      </if>
+      <if test="ts != null" >
+        ts = #{ts,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiangtf.demo.entity.ExtryLeaveUser" >
+    update tb_extry_leave_user
+    set enterprise_id = #{enterpriseId,jdbcType=TINYINT},
+      enterprise_name = #{enterpriseName,jdbcType=VARCHAR},
+      work_status = #{workStatus,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=BIGINT},
+      user_name = #{userName,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      export_time = #{exportTime,jdbcType=TIMESTAMP},
+      is_del = #{isDel,jdbcType=INTEGER},
+      ts = #{ts,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

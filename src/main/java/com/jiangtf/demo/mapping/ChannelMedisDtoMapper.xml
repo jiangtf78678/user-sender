@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jiangtf.demo.dao.ChannelMedisDtoMapper" >
+  <resultMap id="BaseResultMap" type="com.jiangtf.demo.entity.ChannelMedisDto" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="create_by" property="createBy" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="update_by" property="updateBy" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="sys_org_code" property="sysOrgCode" jdbcType="VARCHAR" />
+    <result column="channel_code" property="channelCode" jdbcType="VARCHAR" />
+    <result column="media_name" property="mediaName" jdbcType="VARCHAR" />
+    <result column="media_alias" property="mediaAlias" jdbcType="VARCHAR" />
+    <result column="media_short_name" property="mediaShortName" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, create_by, create_time, update_by, update_time, sys_org_code, channel_code, media_name, 
+    media_alias, media_short_name
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from data_channel_media
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from data_channel_media
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jiangtf.demo.entity.ChannelMedisDto" >
+    insert into data_channel_media (id, create_by, create_time, 
+      update_by, update_time, sys_org_code, 
+      channel_code, media_name, media_alias, 
+      media_short_name)
+    values (#{id,jdbcType=BIGINT}, #{createBy,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateBy,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{sysOrgCode,jdbcType=VARCHAR}, 
+      #{channelCode,jdbcType=VARCHAR}, #{mediaName,jdbcType=VARCHAR}, #{mediaAlias,jdbcType=VARCHAR}, 
+      #{mediaShortName,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jiangtf.demo.entity.ChannelMedisDto" >
+    insert into data_channel_media
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="createBy != null" >
+        create_by,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateBy != null" >
+        update_by,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+      <if test="sysOrgCode != null" >
+        sys_org_code,
+      </if>
+      <if test="channelCode != null" >
+        channel_code,
+      </if>
+      <if test="mediaName != null" >
+        media_name,
+      </if>
+      <if test="mediaAlias != null" >
+        media_alias,
+      </if>
+      <if test="mediaShortName != null" >
+        media_short_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="createBy != null" >
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysOrgCode != null" >
+        #{sysOrgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelCode != null" >
+        #{channelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mediaName != null" >
+        #{mediaName,jdbcType=VARCHAR},
+      </if>
+      <if test="mediaAlias != null" >
+        #{mediaAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="mediaShortName != null" >
+        #{mediaShortName,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jiangtf.demo.entity.ChannelMedisDto" >
+    update data_channel_media
+    <set >
+      <if test="createBy != null" >
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateBy != null" >
+        update_by = #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sysOrgCode != null" >
+        sys_org_code = #{sysOrgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="channelCode != null" >
+        channel_code = #{channelCode,jdbcType=VARCHAR},
+      </if>
+      <if test="mediaName != null" >
+        media_name = #{mediaName,jdbcType=VARCHAR},
+      </if>
+      <if test="mediaAlias != null" >
+        media_alias = #{mediaAlias,jdbcType=VARCHAR},
+      </if>
+      <if test="mediaShortName != null" >
+        media_short_name = #{mediaShortName,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jiangtf.demo.entity.ChannelMedisDto" >
+    update data_channel_media
+    set create_by = #{createBy,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_by = #{updateBy,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      sys_org_code = #{sysOrgCode,jdbcType=VARCHAR},
+      channel_code = #{channelCode,jdbcType=VARCHAR},
+      media_name = #{mediaName,jdbcType=VARCHAR},
+      media_alias = #{mediaAlias,jdbcType=VARCHAR},
+      media_short_name = #{mediaShortName,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
