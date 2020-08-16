@@ -16,6 +16,8 @@ public class BaseEntity {
 
 
     //删除掉了刚才的测试点。试一下另外一种方案。
+
+    //public 11点半
     public void setId(String id) {
         this.id = id;
     }

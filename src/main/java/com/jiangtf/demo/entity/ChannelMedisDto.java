@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class ChannelMedisDto {
 
-    //第二次commit， 第二次push
+    //第三次push到主分支，11点半
     private Long id;
 
     private String createBy;
