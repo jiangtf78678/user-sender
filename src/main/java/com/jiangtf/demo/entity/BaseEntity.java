@@ -13,7 +13,9 @@ public class BaseEntity {
 
     /////444444444444444444444
 
-    //分支提交了两次，看看这个会不会合并到主分支上
+
+
+    //删除掉了刚才的测试点。试一下另外一种方案。
     public void setId(String id) {
         this.id = id;
     }
