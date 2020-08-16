@@ -3,6 +3,8 @@ package com.jiangtf.demo.entity;
 import java.util.Date;
 
 public class ChannelMedisDto {
+
+    //第二次commit， 第二次push
     private Long id;
 
     private String createBy;
