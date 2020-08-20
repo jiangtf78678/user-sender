@@ -3,6 +3,16 @@ package com.jiangtf.demo.entity;
 
 
 public class BaseEntity {
+    String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     //明天放假放假
     private  String id;
     //jtf
@@ -10,15 +20,6 @@ public class BaseEntity {
     public String getId() {
         return id;
     }
-    //33333
-
-    /////444444444444444444444
-
-
-
-    //删除掉了刚才的测试点。试一下另外一种方案。
-
-    //public 11点半
     public void setId(String id) {
         this.id = id;
     }
