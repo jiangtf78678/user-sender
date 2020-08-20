@@ -3,6 +3,7 @@ package com.jiangtf.demo.entity;
 
 
 public class BaseEntity {
+    //明天放假放假
     private  String id;
     //jtf
 
