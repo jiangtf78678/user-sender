@@ -3,9 +3,9 @@ package com.jiangtf.demo.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class ChannelMedisDto implements Serializable {
+public class ChannelMedisDto   {
 
-
+    //主分支删除了implements Serializable
     private Long id;
 
     private String createBy;
