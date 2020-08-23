@@ -1,10 +1,11 @@
 package com.jiangtf.demo.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ChannelMedisDto {
+public class ChannelMedisDto implements Serializable {
 
-    //第三次push到主分支，11点半
+
     private Long id;
 
     private String createBy;
