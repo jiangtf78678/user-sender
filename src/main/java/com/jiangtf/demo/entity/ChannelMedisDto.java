@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class ChannelMedisDto implements Serializable {
 
-
+    //其他分支啦啦啦啦
     private Long id;
 
     private String createBy;
