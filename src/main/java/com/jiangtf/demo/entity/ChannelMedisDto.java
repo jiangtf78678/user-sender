@@ -7,7 +7,7 @@ public class ChannelMedisDto implements Serializable {
 
     //其他分支啦啦啦啦
     private Long id;
-
+    //git megege
     private String createBy;
 
     private Date createTime;
